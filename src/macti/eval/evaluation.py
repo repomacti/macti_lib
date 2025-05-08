@@ -221,7 +221,7 @@ class FileAnswer():
         print('Respuestas y retroalimentación almacenadas.')
         
 class Quiz():
-    def __init__(self, qnum, server = 'hub', spath = ''):
+    def __init__(self, qnum, course, server = 'hub', spath = ''):
         """
         Clase para la evaluación de ejercicios.
         
@@ -256,6 +256,7 @@ class Quiz():
         if self.__server == 'local':
             self.__ans_path = self.__course_path + ".ans" + os.sep + self.__topic
         elif self.__server == 'hub':
+            _, self.__course = os.path.split(cp) + os.sep
             self.__ans_path = self.__server_path + self.__course + ".ans" + os.sep + self.__topic
         
         self.__quiz_num = qnum # Número del quiz
