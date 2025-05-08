@@ -256,8 +256,11 @@ class Quiz():
         if self.__server == 'local':
             self.__ans_path = self.__course_path + ".ans" + os.sep + self.__topic
         elif self.__server == 'hub':
-            _, self.__course = os.path.split(cp) + os.sep
+            _, self.__course = os.path.split(cp)
+            self.__course += os.sep
             self.__ans_path = self.__server_path + self.__course + ".ans" + os.sep + self.__topic
+            #print(self.__course)
+            #print(self.__ans_path)
         
         self.__quiz_num = qnum # Número del quiz
 
@@ -835,7 +838,8 @@ if __name__ == '__main__':
     print("Quiz number:", file_answer.quiz_num)
 
     quiz = Quiz(file_answer.quiz_num, 'local')
-
+    quiz2 = Quiz(file_answer.quiz_num)
+    
     print('\nVerbosidad de la ayuda : {} \n'.format(quiz.verb))
     
     print('Opción')
